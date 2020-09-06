@@ -58,8 +58,8 @@
 	
 	<h1>글쓰기</h1>
 	
+	<form method="POST" action="/board/writeok.do">
 	<div id="content">
-		<form method="POST" action="/board/writeok.do">
 		
 		<table id="tbl">
 			<tr>
@@ -74,15 +74,14 @@
 		
 		</table>
 		
-		</form>
 	</div>
 	
 	<div id="btns">
 		<button id="back" onclick="history.back();">뒤로</button>
-		<input type="submit" value="등록">
-		<!-- <button id="write" type="submit">등록</button> -->
+		<button id="write" type="submit">등록</button>
 		<div style="clear:both;"></div>
 	</div>
+	</form>
 
 
 </body>

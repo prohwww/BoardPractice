@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class BoardDAO {
 
@@ -28,11 +29,17 @@ public class BoardDAO {
 	}
 
 	//Board 서블릿 -> 글 목록 가져오기
-	public ArrayList<BoardDTO> getList() {
+	public ArrayList<BoardDTO> getList(HashMap<String, String> map) {
 		
 		try {
 			
-			String sql = "select * from tblBoard order by seq desc";
+			String where = "";
+			if(map.get("search") != null || !map.get("search").equals("")) {
+				
+				where = String.format("where title like '%%%s%%' or content like '%%%s%%'",map.get("search"),map.get("search"));
+			}
+			
+			String sql = String.format("select * from tblBoard %s order by seq desc",where);
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
 			
@@ -129,6 +136,23 @@ public class BoardDAO {
 			pstat.setString(1, seq);
 			
 			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	//Board
+	public int countPage(int pagelist) {
+		try {
+			String sql = "select count(*) as cnt from tblBoard";
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			if(rs.next()) {
+				return rs.getInt("cnt");
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();

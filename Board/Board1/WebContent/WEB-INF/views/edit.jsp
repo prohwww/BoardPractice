@@ -59,8 +59,8 @@
 	
 	<h1>수정하기</h1>
 	
+	<form method="POST" action="/board/editok.do">
 	<div id="content">
-		<form method="POST" action="/board/editok.do">
 		
 		<table id="tbl">
 			<tr>
@@ -75,9 +75,8 @@
 		
 		</table>
 		
-		<input type="hidden" name="seq" value="%{dto.seq}">
+		<input type="hidden" name="seq" value="${dto.seq}">
 		
-		</form>
 	</div>
 	
 	<div id="btns">
@@ -85,6 +84,7 @@
 		<button id="write" type="submit">등록</button>
 		<div style="clear:both;"></div>
 	</div>
+	</form>
 
 
 </body>

@@ -10,41 +10,29 @@
 <style>
 	
 	#tbl {
-		border: 1px solid #ccc;
+		/* border: 1px solid #ccc; */
 		border-collapse: collapse;
-		width: 600px;
-		height: 700px;
+		width: 500px;
+		height: 400px;
 	}
-	#tbl *{ border: 1px solid #ccc; }
-	#tbl td > input {
-		width: 480px;
-		border: 0px;
-		outline: none;
+	#tbl td, #tbl tr{ border: 1px solid #ccc; }
+	#tbl td {
+		width: 500px;
 		padding: 10px;
 	}
-	
-	#tbl th {
-		width: 50px;
+	#tbl td > span {
+		float: right;
+		font-size: 12px;
 	}
-	#tbl td{
-		width: 480px;
-		padding-left: 10px;
-		padding-right: 10px;
-	}
-	#content {
-		width: 480px;
-		height: 500px;
-		outline: none;
-		padding: 10px;
-		resize: none;
-		border: 0px;
+	#ctd{
+		height: 300px;
 	}
 	
 	#btns {
 /* 		border: 1px solid black; */
 		position: relative;
-		width: 600px;
-		top: 210px;
+		width: 490px;
+		top: 0px;
 		margin-left: 10px;
 	}
 	
@@ -58,14 +46,14 @@
 <body>
 	
 	<div id="content">
-		
+		<h2>#${dto.seq}번째 게시물 입니다.</h2>
 		<table id="tbl">
 			<tr>
 				<td>${dto.title} <span>${dto.regdate}</span></td>
 			</tr>
 			
 			<tr>
-				<td>${dto.content}</td>
+				<td id="ctd">${dto.content}</td>
 			</tr>
 		
 		</table>
